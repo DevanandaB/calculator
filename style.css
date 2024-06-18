@@ -1,0 +1,58 @@
+.body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.container {
+    width: 400px;
+    height: 650px;
+    background-color: black;
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 14px;
+}
+#display {
+    width: 400px;
+    height: 165px;
+    margin: 15px;
+    color: white;
+    font-size: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: aquamarine;
+}
+button {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    min-width: 100px;
+    background-color: rgb(192, 184, 184);
+    font-size: 22px;
+    padding: 18px;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: rgb(212, 207, 207);
+}
+button:active {
+    background-color: rgb(157, 155, 155);
+}
+.signs {
+    background-color: rgb(137, 134, 134);
+    color: white;
+    font-weight: bold;
+}
+.signs:hover {
+    background-color: rgb(157, 155, 155);
+}
+.signs:active {
+    background-color: rgb(177, 174, 174);
+}
+#zero {
+    width: 200px;
+}
