@@ -1,11 +1,6 @@
 const container = document.querySelector(".container");
-const display = document.querySelector(".display");
-const buttons = document.querySelectorAll("button");
+const display = document.querySelector("#display");
 
-function add() {};
-
-function subtract() {};
-
-function multiply() {};
-
-function division() {};
+function appendToDisplay(input) {
+    display.value += input;
+}
