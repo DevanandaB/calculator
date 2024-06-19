@@ -42,19 +42,22 @@ button:hover {
 button:active {
     background-color: rgb(157, 155, 155);
 }
-.signs {
+.operators {
     background-color: rgb(137, 134, 134);
     color: white;
     font-weight: bold;
 }
-.signs:hover {
+.operators:hover {
     background-color: rgb(157, 155, 155);
 }
-.signs:active {
+.operators:active {
     background-color: rgb(177, 174, 174);
 }
 #zero {
     width: 200px;
+}
+#delete {
+    background-color: rgb(192, 31, 31);
 }
 #delete:hover {
     background-color: rgb(211, 58, 58);

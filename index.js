@@ -1,10 +1,6 @@
 const container = document.querySelector(".container");
 const display = document.querySelector("#display");
 const deleteBtn = document.querySelector("#delete");
-const add = document.querySelector("#add");
-const subtract = document.querySelector("#subtract");
-const multiply = document.querySelector("#multiply");
-const divide = document.querySelector("#division");
 
 function appendToDisplay(input) {
     display.value += input;
@@ -23,3 +19,25 @@ function product(...arr) { return arr.reduce((prevValue, currValue) => prevValue
 function division(...arr) { return arr.reduce((prevValue, currValue) => prevValue / currValue) };
 
 deleteBtn.addEventListener("click", clear);
+
+let num1;
+let num2;
+let operators = document.querySelectorAll(".operators");
+ 
+function operate(num1, num2, operators) {
+    if(operators === '+') {
+        return sum(num1, num2);
+    }
+    else if(operators === '-') {
+        return difference(num1, num2);
+    }
+    else if(operators === '*') {
+        return product(num1, num2);
+    }
+    else if(operators === '/') {
+        return division(num1, num2);
+    }
+    return num2;
+}
+
+equals.addEventListener("click", operate);
