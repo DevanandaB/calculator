@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const display = document.querySelector("#display");
 const deleteBtn = document.querySelector("#delete");
+const equals = document.querySelector("#equals");
 
 function appendToDisplay(input) {
     display.value += input;
@@ -24,20 +25,22 @@ let num1;
 let num2;
 let operators = document.querySelectorAll(".operators");
  
-function operate(num1, num2, operators) {
+function operate(num1, operators, num2) {
+    display.value.split('');
     if(operators === '+') {
-        return sum(num1, num2);
+        display.value = sum(num1, num2);
     }
     else if(operators === '-') {
-        return difference(num1, num2);
+        display.value = difference(num1, num2);
     }
     else if(operators === '*') {
-        return product(num1, num2);
+        display.value = product(num1, num2);
     }
     else if(operators === '/') {
-        return division(num1, num2);
+        display.value = division(num1, num2);
+    } else {
+        display.value = num2;
     }
-    return num2;
 }
 
 equals.addEventListener("click", operate);
