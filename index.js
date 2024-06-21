@@ -2,9 +2,11 @@ const container = document.querySelector(".container");
 const display = document.querySelector("#display");
 const deleteBtn = document.querySelector("#delete");
 const equals = document.querySelector("#equals");
+const operators = document.querySelectorAll(".operators");
 
 function appendToDisplay(input) {
     display.value += input;
+    // console.log(display.value += input);
 }
 
 function clear() {
@@ -21,25 +23,25 @@ function division(...arr) { return arr.reduce((prevValue, currValue) => prevValu
 
 deleteBtn.addEventListener("click", clear);
 
-let num1;
-let num2;
-let operators = document.querySelectorAll(".operators");
+let num1 = "";
+let num2 = "";
+let operator = "";
  
-function operate(num1, operators, num2) {
-    display.value.split('');
-    if(operators === '+') {
-        display.value = sum(num1, num2);
-    }
-    else if(operators === '-') {
-        display.value = difference(num1, num2);
-    }
-    else if(operators === '*') {
-        display.value = product(num1, num2);
-    }
-    else if(operators === '/') {
-        display.value = division(num1, num2);
+function operate() {
+    num1 = Number(num1);
+    num2 = Number(num2);
+
+    if(operator === '+') {
+        num2 = sum(num1, num2);
+        display.textContent = num2;
+    } else if(operator === '-') {
+        num2 = sum(num1, num2);
+    } else if(operator === '*') {
+        num2 = sum(num1, num2);
+    } else if(operator === '/') {
+        num2 = sum(num1, num2);
     } else {
-        display.value = num2;
+        return num2;
     }
 }
 
