@@ -4,9 +4,19 @@ const deleteBtn = document.querySelector("#delete");
 const equals = document.querySelector("#equals");
 const operators = document.querySelectorAll(".operators");
 
+// const calculate = {
+//     displayValue: "0",
+//     num1: null,
+//     waitingForNum2: false,
+//     operator: null,
+// }
+
+// function appendToDisplay() {
+//     display.value += calculate.displayValue;
+// }
+
 function appendToDisplay(input) {
     display.value += input;
-    // console.log(display.value += input);
 }
 
 function clear() {
