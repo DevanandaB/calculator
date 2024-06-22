@@ -3,17 +3,7 @@ const display = document.querySelector("#display");
 const deleteBtn = document.querySelector("#delete");
 const equals = document.querySelector("#equals");
 const operators = document.querySelectorAll(".operators");
-
-// const calculate = {
-//     displayValue: "0",
-//     num1: null,
-//     waitingForNum2: false,
-//     operator: null,
-// }
-
-// function appendToDisplay() {
-//     display.value += calculate.displayValue;
-// }
+const keys = document.querySelector(".keys");
 
 function appendToDisplay(input) {
     display.value += input;
@@ -41,17 +31,22 @@ function operate() {
     num1 = Number(num1);
     num2 = Number(num2);
 
+    
     if(operator === '+') {
         num2 = sum(num1, num2);
         display.textContent = num2;
     } else if(operator === '-') {
         num2 = sum(num1, num2);
+        display.textContent = num2;
     } else if(operator === '*') {
         num2 = sum(num1, num2);
+        display.textContent = num2;
     } else if(operator === '/') {
         num2 = sum(num1, num2);
+        display.textContent = num2;
+
     } else {
-        return num2;
+        display.textContent = num2;
     }
 }
 
