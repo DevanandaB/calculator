@@ -1,53 +1,105 @@
-const container = document.querySelector(".container");
-const display = document.querySelector("#display");
-const deleteBtn = document.querySelector("#delete");
-const equals = document.querySelector("#equals");
-const operators = document.querySelectorAll(".operators");
+const calculator = {
+    displayValue: '0',
+    num1: null,
+    waitingForNum2: false,
+    operator: null,  
+};
+
+function updateDisplay() {
+    const display = document.querySelector(".display");
+    display.value = calculator.displayValue;
+};
+updateDisplay();
+
 const keys = document.querySelector(".keys");
+keys.addEventListener("click", (e) => {
+    const { target } = e;
 
-function appendToDisplay(input) {
-    display.value += input;
-}
-
-function clear() {
-    display.value = "";
-}
-
-function sum(...arr) { return arr.reduce((prevValue, currValue) => prevValue + currValue, 0) };
-
-function difference(...arr) { return arr.reduce((prevValue, currValue) => prevValue - currValue) };
-
-function product(...arr) { return arr.reduce((prevValue, currValue) => prevValue * currValue) };
-
-function division(...arr) { return arr.reduce((prevValue, currValue) => prevValue / currValue) };
-
-deleteBtn.addEventListener("click", clear);
-
-let num1 = "";
-let num2 = "";
-let operator = "";
- 
-function operate() {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
-    
-    if(operator === '+') {
-        num2 = sum(num1, num2);
-        display.textContent = num2;
-    } else if(operator === '-') {
-        num2 = sum(num1, num2);
-        display.textContent = num2;
-    } else if(operator === '*') {
-        num2 = sum(num1, num2);
-        display.textContent = num2;
-    } else if(operator === '/') {
-        num2 = sum(num1, num2);
-        display.textContent = num2;
-
-    } else {
-        display.textContent = num2;
+    if(!target.matches('button')) {
+        return;
     }
-}
 
-equals.addEventListener("click", operate);
+    if(target.classList.contains('operator')) {
+        handleOperator(target.value);
+        updateDisplay();
+        return;
+    }
+
+    if(target.classList.contains('decimal')) {
+        inputDecimal(target.value);
+        updateDisplay();
+        return;
+    } 
+
+    if(target.classList.contains('all-clear')) {
+        resetCalc(target.value);
+        updateDisplay();
+        return;
+    }
+
+    handleKeys(target.value);
+    updateDisplay();
+});
+
+function handleKeys(keys) {
+    const { displayValue, waitingForNum2 } = calculator;
+
+    if(waitingForNum2 === true) {
+        calculator.displayValue = keys;
+        calculator.waitingForNum2 = false;
+    } else {
+        calculator.displayValue = displayValue === '0' ? keys : displayValue + keys; 
+    }
+};
+
+function inputDecimal(dec) {
+    if(calculator.waitingForNum2 === true) {
+        calculator.displayValue = '0.';
+        calculator.waitingForNum2 = false;
+        return;
+    } 
+    if(!calculator.displayValue.includes(dec)) {
+        calculator.displayValue += dec;
+    }
+};
+
+function handleOperator(nextOperator) {
+    const { num1, displayValue, operator } = calculator;
+    const input = parseFloat(displayValue);
+
+    if(operator && calculator.waitingForNum2) {
+        calculator.operator = nextOperator;
+        return;
+    }
+
+    if(num1 == null && !isNaN(input)) {
+        calculator.num1 = input;
+    } else if(operator) {
+        const result = operate(num1, input, operator);
+        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+        calculator.num1  = result;
+    }
+
+    calculator.waitingForNum2 = true;
+    calculator.operator = nextOperator;
+};
+
+function operate(num1, num2, operator) {
+    if(operator === '+') {
+        return num1 + num2;
+    } else if(operator === '-') {
+        return num1 - num2;
+    } else if(operator === '*') {
+        return num1 * num2;
+    } else if(operator === '/') {
+        return num1 / num2;
+    }
+    return num2;
+};
+
+function resetCalc() {
+    calculator.displayValue = '0';
+    calculator.num1 = null;
+    calculator.waitingForNum2 = false;
+    calculator.operator = null; 
+}

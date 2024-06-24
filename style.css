@@ -3,6 +3,26 @@
     padding: 0;
     text-align: center;
 }
+/* .result {
+    color: white;
+    width: 360px;
+    height: 165px;
+    margin: 15px;
+    color: white;
+    font-size: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(113, 210, 178);
+    display: flex;
+    align-items: center;
+}
+.result .prevNum {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: red;
+    font-size: 30px;
+} */
 .container {
     width: 400px;
     height: 640px;
@@ -16,7 +36,7 @@
     flex-direction: row;
     padding: 14px;
 }
-#display {
+.display {
     width: 360px;
     height: 165px;
     margin: 15px;
@@ -44,27 +64,27 @@
 .keys button:active {
     background-color: rgb(157, 155, 155);
 }
-.keys .operators {
+.keys .operator {
     background-color: rgb(121, 120, 120);
     color: white;
     font-weight: bold;
 }
-.keys .operators:hover {
+.keys .operator:hover {
     background-color: rgb(160, 155, 155);
 }
-.keys .operators:active {
+.keys .operator:active {
     background-color: rgb(177, 174, 174);
 }
-#equals {
+.keys .equals {
     width: 184px;
     background-color: rgb(121, 120, 120); 
     color: white;
     font-weight: bold;
 }
-#equals:hover {
+.keys .equals:hover {
     background-color: rgb(157, 155, 155);
 }
-#equals:active {
+.keys .equals:active {
     background-color: rgb(177, 174, 174);
 }
 #delete {
